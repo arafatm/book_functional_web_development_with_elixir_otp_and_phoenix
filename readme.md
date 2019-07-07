@@ -155,6 +155,12 @@ guesses = update_in(guesses.hits, &MapSet.put(&1, coordinate1))
 # 	  misses: #MapSet<[]>}
 
 ```
+
+##### Islands
+
+Islands have shapes: `:atoll, :dot, :l_shape, :s_shape, and :square`
+
+
 xxx
 
 #### Transforming Data
