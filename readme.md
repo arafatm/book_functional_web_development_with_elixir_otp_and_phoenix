@@ -63,6 +63,8 @@ $ tree
 
 #### Discover the Entities and Model the Domain
 
+#### The Board
+
 ![Board](images/board.png)
 
 2 Boards, 1 for each player. Data structures we choose will need to support
@@ -82,6 +84,8 @@ Can use **map** `%{row: 1, col: 1}`. Good encapsulation and easy to pattern matc
 - offer compile time checks on keys
 - runtime checks on type
 
+#### Coordinate
+
 [:ship: 8023eee](https://github.com/arafatm/book_functional_web_development_with_elixir_otp_and_phoenix/commit/8023eee)
 Coordinate module that aliases itself
 - Allows `%Coordinate{}` instead of `%IslandsEngine.Coordinate{}`
@@ -89,33 +93,35 @@ Coordinate module that aliases itself
 [:ship: e6364e0](https://github.com/arafatm/book_functional_web_development_with_elixir_otp_and_phoenix/commit/e6364e0)
 define a struct with row and col keys with `@enforce_keys`
 
-```iex
-$ iex -S mix
+`iex -S mix`
 
-# Let’s alias the module to save some typing:
-iex> alias IslandsEngine.Coordinate 
-IslandsEngine.Coordinate
+Let’s alias the module to save some typing:
 
-# If we create a new coordinate with valid row and column values, we get a full
-# coordinate struct back:
-iex> Coordinate.new(1, 1)
-{:ok, %IslandsEngine.Coordinate{col: 1, row: 1}}
+`alias IslandsEngine.Coordinate`
+> IslandsEngine.Coordinate
 
-# If we give it values that are off the board, though, we get back an error:
-iex> Coordinate.new(-1, 1)
-{:error, :invalid_coordinate}
+
+If we create a new coordinate with valid row and column values, we get a full
+coordinate struct back:
+`Coordinate.new(1, 1)`
+> {:ok, %IslandsEngine.Coordinate{col: 1, row: 1}}
+
+If we give it values that are off the board, though, we get back an error:
+`Coordinate.new(-1, 1)`
+> {:error, :invalid_coordinate}
  	
-iex> Coordinate.new(11, 1)
-{:error, :invalid_coordinate}
+`Coordinate.new(11, 1)`
+> {:error, :invalid_coordinate}
 
-# If we try to create a coordinate struct manually without both keys, we’ll get
-# an error:
-iex> %Coordinate{row: 5}
-** (ArgumentError) the following keys must also be given when building struct
-		IslandsEngine.Coordinate: [:col]
-		(new_islands) expanding struct: IslandsEngine.Coordinate.__struct__/1
-									iex:4: (file)
-```
+If we try to create a coordinate struct manually without both keys, we’ll get
+an error:
+`iex> %Coordinate{row: 5}`
+> ** (ArgumentError) the following keys must also be given when building struct
+> 		IslandsEngine.Coordinate: [:col]
+> 		(new_islands) expanding struct: IslandsEngine.Coordinate.__struct__/1
+> 									iex:4: (file)
+
+#### Guesses
 
 xxx
 #### Transforming Data
