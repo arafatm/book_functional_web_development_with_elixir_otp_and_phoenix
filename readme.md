@@ -96,14 +96,16 @@ define a struct with row and col keys with `@enforce_keys`
 `iex -S mix`
 
 Let’s alias the module to save some typing:
-> alias IslandsEngine.Coordinate
+```
+alias IslandsEngine.Coordinate
+```
     IslandsEngine.Coordinate
-
 
 If we create a new coordinate with valid row and column values, we get a full
 coordinate struct back:
-
-`Coordinate.new(1, 1)`
+```
+Coordinate.new(1, 1)
+```
     {:ok, %IslandsEngine.Coordinate{col: 1, row: 1}}
 
 If we give it values that are off the board, though, we get back an error:
