@@ -42,6 +42,9 @@ The first player to forest all of her opponent’s islands is the winner.
 
 #### Let’s Build It
 
+[:ship: 3548a93](https://github.com/arafatm/book_functional_web_development_with_elixir_otp_and_phoenix/commit/3548a93)
+`$ mix new islands_engine --sup` #
+
 xxx
 
 #### Discover the Entities and Model the Domain
