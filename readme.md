@@ -45,9 +45,45 @@ The first player to forest all of her opponent’s islands is the winner.
 [:ship: 3548a93](https://github.com/arafatm/book_functional_web_development_with_elixir_otp_and_phoenix/commit/3548a93)
 `$ mix new islands_engine --sup` #
 
-xxx
+```
+$ tree
+.
+├── README.md
+├── config
+│   └── config.exs
+├── lib
+│   ├── islands_engine
+│   │   └── application.ex
+│   └── islands_engine.ex
+├── mix.exs
+└── test
+├── islands_engine_test.exs
+└── test_helper.exs
+```
+
 
 #### Discover the Entities and Model the Domain
+
+![Board](images/board.png)
+
+2 Boards, 1 for each player. Data structures we choose will need to support
+these actions as well:
+- Players need to be able to position islands on their own boards.
+- Players need to be able to guess coordinates on their opponent’s boards.
+- The game needs to determine if a guess results in a hit or a miss.
+- The game needs to determine if a guess results in a forested island.
+- The game needs to determine if a guess results in a win.
+
+Can use **tuple** `{1,1}`; Hard to encode as JSON
+
+Can use **map** `%{row: 1, col: 1}`. Good encapsulation and easy to pattern match.
+
+3rd option is to use **struct**. 
+- similar to map
+- offer compile time checks on keys
+- runtime checks on type
+
+xxx
 #### Transforming Data
 #### Putting the Pieces Together
 #### Wrapping Up
