@@ -61,7 +61,6 @@ $ tree
 └── test_helper.exs
 ```
 
-
 #### Discover the Entities and Model the Domain
 
 ![Board](images/board.png)
@@ -89,6 +88,34 @@ Coordinate module that aliases itself
 
 [:ship: e6364e0](https://github.com/arafatm/book_functional_web_development_with_elixir_otp_and_phoenix/commit/e6364e0)
 define a struct with row and col keys with `@enforce_keys`
+
+```iex
+$ iex -S mix
+
+# Let’s alias the module to save some typing:
+iex> alias IslandsEngine.Coordinate 
+IslandsEngine.Coordinate
+
+# If we create a new coordinate with valid row and column values, we get a full
+# coordinate struct back:
+iex> Coordinate.new(1, 1)
+{:ok, %IslandsEngine.Coordinate{col: 1, row: 1}}
+
+# If we give it values that are off the board, though, we get back an error:
+iex> Coordinate.new(-1, 1)
+{:error, :invalid_coordinate}
+ 	
+iex> Coordinate.new(11, 1)
+{:error, :invalid_coordinate}
+
+# If we try to create a coordinate struct manually without both keys, we’ll get
+# an error:
+iex> %Coordinate{row: 5}
+** (ArgumentError) the following keys must also be given when building struct
+		IslandsEngine.Coordinate: [:col]
+		(new_islands) expanding struct: IslandsEngine.Coordinate.__struct__/1
+									iex:4: (file)
+```
 
 xxx
 #### Transforming Data
