@@ -63,8 +63,6 @@ $ tree
 
 #### Discover the Entities and Model the Domain
 
-#### The Board
-
 ![Board](images/board.png)
 
 2 Boards, 1 for each player. Data structures we choose will need to support
@@ -112,9 +110,13 @@ Coordinate{row: 5}
 #     (new_islands) expanding struct: IslandsEngine.Coordinate.__struct__/1
 #                    iex:4: (file)
 ```
+
 #### Guesses
 
 xxx
+
+Using a **MapSet** guarantees uniqueness.
+
 #### Transforming Data
 #### Putting the Pieces Together
 #### Wrapping Up
