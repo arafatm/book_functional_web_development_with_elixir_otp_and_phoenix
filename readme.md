@@ -113,9 +113,49 @@ Coordinate{row: 5}
 
 #### Guesses
 
-xxx
+[:ship ff07aef](https://github.com/arafatm/book_functional_web_development_with_elixir_otp_and_phoenix/commit/ff07aef)
+IslandsEngine.Guesses using MapSet to guarantee unique hits and misses
+> Using a **MapSet** guarantees uniqueness.
 
-Using a **MapSet** guarantees uniqueness.
+`iex -S iex`
+
+```elixir
+alias IslandsEngine.{Coordinate, Guesses}
+# 	[IslandsEngine.Coordinate, IslandsEngine.Guesses]
+
+#Let’s generate a new Guesses map and a few coordinates to experiment with:
+guesses = Guesses.new
+# %IslandsEngine.Guesses{hits: #MapSet<[]>, misses: #MapSet<[]>}
+ 	
+{:ok, coordinate1} = Coordinate.new(1, 1)
+#	  {:ok, %IslandsEngine.Coordinate{col: 1, row: 1}}
+ 	
+{:ok, coordinate2} = Coordinate.new(2, 2)
+#   {:ok, %IslandsEngine.Coordinate{col: 2, row: 2}}
+
+guesses = update_in(guesses.hits, &MapSet.put(&1, coordinate1))
+# 	%IslandsEngine.Guesses{
+# 	  hits: #MapSet<[%IslandsEngine.Coordinate{col: 1, row: 1}]>,
+# 	  misses: #MapSet<[]>
+# 	}
+
+guesses = update_in(guesses.hits, &MapSet.put(&1, coordinate2))
+# 	%{hits: #MapSet<[
+# 	    %IslandsEngine.Coordinate{col: 1, row: 1},
+# 	    %IslandsEngine.Coordinate{col: 2, row: 2}
+# 	  ]>,
+# 	  misses: #MapSet<[]>}
+
+# Note that even though we try to put coordinate1 a 2nd time it's still unique
+guesses = update_in(guesses.hits, &MapSet.put(&1, coordinate1))
+# 	%{hits: #MapSet<[
+# 	    %IslandsEngine.Coordinate{col: 1, row: 1},
+# 	    %IslandsEngine.Coordinate{col: 2, row: 2}
+# 	  ]>,
+# 	  misses: #MapSet<[]>}
+
+```
+xxx
 
 #### Transforming Data
 #### Putting the Pieces Together

@@ -1,4 +1,4 @@
-idefmodule IslandsEngine.Guesses do
+defmodule IslandsEngine.Guesses do
   alias __MODULE__
 
   @enforce_keys [:hits, :misses]
