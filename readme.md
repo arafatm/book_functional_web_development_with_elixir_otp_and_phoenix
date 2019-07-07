@@ -85,6 +85,7 @@ Can use **map** `%{row: 1, col: 1}`. Good encapsulation and easy to pattern matc
 
 [:ship: 8023eee](https://github.com/arafatm/book_functional_web_development_with_elixir_otp_and_phoenix/commit/8023eee)
 Coordinate module that aliases itself
+- Allows `%Coordinate{}` instead of `%IslandsEngine.Coordinate{}`
 
 xxx
 #### Transforming Data
